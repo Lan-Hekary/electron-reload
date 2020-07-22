@@ -22,9 +22,10 @@ const createHardresetHandler = (eXecutable, hardResetMethod, argv) =>
   () => {
     // Detaching child is useful when in Windows to let child
     // live after the parent is killed
-    const args = (argv || []).concat([appPath])
+    const args = (argv || [])
     const child = spawn(eXecutable, args, {
-      detached: true,
+      detached: false,
+      shell: true,
       stdio: 'inherit'
     })
     child.unref()
